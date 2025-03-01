@@ -1,0 +1,80 @@
+/* Register Page Styling */
+.register-container {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #1f2937; /* Tailwind gray-800 */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.register-title {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.register-subtext {
+    color: #9ca3af; /* Tailwind gray-400 */
+    font-size: 14px;
+}
+
+.register-link {
+    color: #3b82f6; /* Tailwind blue-500 */
+    text-decoration: none;
+}
+
+.register-link:hover {
+    color: #1e40af; /* Tailwind blue-700 */
+}
+
+.register-form {
+    margin-top: 20px;
+}
+
+.register-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #111827; /* Tailwind gray-900 */
+    color: white;
+    border: 1px solid #374151; /* Tailwind gray-700 */
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+.register-input:focus {
+    border-color: #9333ea; /* Tailwind purple-600 */
+    box-shadow: 0 0 5px #9333ea;
+}
+
+.register-file-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #111827;
+    color: #9ca3af;
+    border: 1px solid #374151;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #9333ea; /* Tailwind purple-600 */
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.register-button:hover {
+    background-color: #7e22ce; /* Tailwind purple-700 */
+}
