@@ -33,6 +33,7 @@ const Profile: React.FC = () => {
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem('user');
+    window.location.reload();
   };
 
   return (

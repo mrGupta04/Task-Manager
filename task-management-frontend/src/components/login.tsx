@@ -38,61 +38,61 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       }
     } catch (err: any) {
       console.error("Login error:", err);
-      setError("An error occurred. Please try again.");
+      setError("Invalid email or password");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="login-container">
-      <h2 className="login-title">Login to Your Account</h2>
-      {error && <p className="error-message">{error}</p>}
+    <div className="auth-login-container">
+      <h2 className="auth-login-title">Login to Your Account</h2>
+      {error && <p className="auth-error-message">{error}</p>}
 
-      <form className="login-form" onSubmit={handleSubmit} autoComplete="off">
-        <div className="input-group">
+      <form className="auth-login-form" onSubmit={handleSubmit} autoComplete="off">
+        <div className="auth-input-group">
           <input
             type="email"
             name="email"
             value={user.email}
             onChange={handleChange}
-            className="input-field"
+            className="auth-input-field"
             placeholder="Your email"
             required
           />
         </div>
 
-        <div className="input-group">
+        <div className="auth-input-group">
           <input
             type="password"
             name="password"
             value={user.password}
             onChange={handleChange}
-            className="input-field"
+            className="auth-input-field"
             placeholder="Your password"
             required
           />
         </div>
 
-        <div className="forgot-password">
+        <div className="auth-forgot-password">
           <button
             type="button"
-            className="forgot-password-link"
+            className="auth-forgot-password-link"
             onClick={() => navigate("/resetpassword")}
           >
             Forgot Your Password?
           </button>
         </div>
 
-        <button type="submit" className="login-btn" disabled={loading}>
+        <button type="submit" className="auth-login-btn" disabled={loading}>
           {loading ? "Logging in..." : "Login"}
         </button>
       </form>
 
-      <div className="register-link">
+      <div className="auth-register-link">
         <button
           type="button"
-          className="register-link-btn"
+          className="auth-register-link-btn"
           onClick={() => navigate("/signup")}
         >
           Don't have an account? Sign up

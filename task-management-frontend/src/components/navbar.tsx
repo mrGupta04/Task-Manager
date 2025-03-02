@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import '../styles/navbar.css';
+import React, { useState, useEffect } from 'react';
+import "../styles/navbar.css";
+
+const API_BASE_URL = "http://localhost:5000"; // Adjust to your backend URL
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -9,43 +11,47 @@ const Header: React.FC = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files[0]) {
-      const imageUrl = URL.createObjectURL(event.target.files[0]);
-      setProfileImage(imageUrl);
+  // Load profile image from localStorage (or replace with API call)
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user") || "{}");
+    if (userData.profile_pic) {
+      setProfileImage(`${API_BASE_URL}/uploads/${userData.profile_pic}`);
     }
-  };
+  }, []);
 
   return (
-    <header className="header">
-      <div className="header-container">
+    <header className="modern-navbar">
+      <div className="modern-navbar__container">
         {/* Logo */}
-        <div className="logo">
-          <a href="/" className="logo-link">
+        <div className="modern-navbar__logo">
+          <a href="/" className="modern-navbar__logo-link">
             Task Manager
           </a>
         </div>
 
         {/* Desktop Menu */}
-        <nav className="desktop-menu">
-          <a href="/" className="nav-link">Home</a>
-          <a href="/tasks" className="nav-link">Tasks</a>
-          <a href="/profile" className="nav-link">Profile</a>
+        <nav className="modern-navbar__desktop-menu">
+          <a href="/" className="modern-navbar__desktop-link">Home</a>
+          <a href="/profile" className="modern-navbar__profile-link">
+            {profileImage ? (
+              <img src={profileImage} alt="Profile" className="modern-navbar__profile-image" />
+            ) : (
+              <i className="fas fa-user-circle modern-navbar__profile-icon"></i>
+            )}
+          </a>
         </nav>
 
-        
-
-     
-        <button className="mobile-menu-button" onClick={toggleMobileMenu}>
-          <span className="hamburger-icon">&#9776;</span>
+        {/* Mobile Menu Button */}
+        <button className="modern-navbar__mobile-menu-button" onClick={toggleMobileMenu}>
+          <span className="modern-navbar__hamburger-icon">&#9776;</span>
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <div className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-        <a href="/" className="mobile-nav-link">Home</a>
-        <a href="/tasks" className="mobile-nav-link">Tasks</a>
-        <a href="/profile" className="mobile-nav-link">Profile</a>
+      <div className={`modern-navbar__mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}>
+        <a href="/" className="modern-navbar__mobile-nav-link">Home</a>
+        <a href="/tasks" className="modern-navbar__mobile-nav-link">Tasks</a>
+        <a href="/profile" className="modern-navbar__mobile-nav-link">Profile</a>
       </div>
     </header>
   );

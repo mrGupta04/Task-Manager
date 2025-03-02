@@ -47,7 +47,7 @@ const Signup: React.FC = () => {
             formData.append("email", email);
             formData.append("mobile_number", mobile_number);
             formData.append("password", password);
-            
+
             if (profile_pic) {
                 formData.append("profile_pic", profile_pic);
             }
@@ -83,7 +83,7 @@ const Signup: React.FC = () => {
             <h2 className="register-title">Create a New Account</h2>
             <p className="register-subtext">
                 Already have an account?{" "}
-                <button className="register-link" type="button" onClick={() => navigate("/login")}>
+                <button className="register-link" type="button" onClick={() => navigate("/profile")}>
                     Login
                 </button>
             </p>
@@ -122,6 +122,14 @@ const Signup: React.FC = () => {
                     className="register-file-input"
                     required
                 />
+                {/* Profile preview - Add this right after file input */}
+                {user.profile_pic && (
+                    <img
+                        src={URL.createObjectURL(user.profile_pic)}
+                        alt="Profile Preview"
+                        className="profile-preview"
+                    />
+                )}
                 <input
                     type="password"
                     name="password"

@@ -1,0 +1,149 @@
+/* Update Task Container */
+.update-task-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff; /* White background */
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-family: "Inter", sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .update-task-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover */
+  }
+  
+  /* Update Task Title */
+  .update-task-title {
+    font-size: 2rem;
+    color: #2c3e50; /* Dark blue-gray */
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  /* Update Task Form */
+  .update-task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* Input and Textarea Styles */
+  .update-task-input,
+  .update-task-textarea,
+  .update-task-select {
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #34495e; /* Slightly lighter blue-gray */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .update-task-input:focus,
+  .update-task-textarea:focus,
+  .update-task-select:focus {
+    border-color: #00bcd4; /* Teal border on focus */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1); /* Subtle focus shadow */
+  }
+  
+  .update-task-textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 120px; /* Minimum height */
+  }
+  
+  /* Select Dropdown Styles */
+  .update-task-select {
+    appearance: none; /* Remove default arrow */
+    background-color: #ffffff;
+    cursor: pointer;
+  }
+  
+  /* Update Task Buttons Container */
+  .update-task-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end; /* Align buttons to the right */
+  }
+  
+  /* Update Task Button */
+  .update-task-button {
+    background-color: #00bcd4; /* Teal */
+    color: #ffffff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+  }
+  
+  .update-task-button:hover {
+    background-color: #0097a7; /* Darker teal */
+    transform: translateY(-2px);
+  }
+  
+  .update-task-button:active {
+    transform: translateY(0);
+  }
+  
+  /* Cancel Button */
+  .update-task-button.cancel {
+    background-color: #f44336; /* Red */
+    color: #ffffff;
+  }
+  
+  .update-task-button.cancel:hover {
+    background-color: #d32f2f; /* Darker red */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .update-task-container {
+      padding: 1.5rem;
+      margin: 1.5rem;
+    }
+  
+    .update-task-title {
+      font-size: 1.75rem;
+    }
+  
+    .update-task-input,
+    .update-task-textarea,
+    .update-task-select {
+      font-size: 0.95rem;
+    }
+  
+    .update-task-buttons {
+      flex-direction: column; /* Stack buttons vertically on smaller screens */
+      gap: 0.75rem;
+    }
+  
+    .update-task-button {
+      width: 100%; /* Full width buttons on smaller screens */
+      padding: 0.65rem 1.25rem;
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .update-task-container {
+      padding: 1.25rem;
+      margin: 1rem;
+    }
+  
+    .update-task-title {
+      font-size: 1.5rem;
+    }
+  
+    .update-task-input,
+    .update-task-textarea,
+    .update-task-select {
+      font-size: 0.9rem;
+    }
+  }

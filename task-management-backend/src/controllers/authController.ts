@@ -111,51 +111,57 @@ export const register = [
     next(error);
   }
 };
+
+
+
 export const updateprofile = [
-  upload.single('profile_pic'),
+  upload.single("profile_pic"),
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const { email, username, mobile_number } = req.body;
 
-      // Validate input
       if (!email) {
-        res.status(400).json({ success: false, message: 'Email is required.' });
+        res.status(400).json({ success: false, message: "Email is required." });
         return;
       }
 
       // Find user by email
       const user = await User.findOne({ where: { email } });
       if (!user) {
-        res.status(404).json({ success: false, message: 'User not found.' });
+        res.status(404).json({ success: false, message: "User not found." });
         return;
       }
 
       // Update user details
       const profile_pic = req.file ? req.file.filename : user.profile_pic;
+
+      // Update only fields that are provided
       await user.update({
         username: username || user.username,
         mobile_number: mobile_number || user.mobile_number,
         profile_pic,
       });
 
-      // Send response
+      // Send response with updated user data
       res.status(200).json({
         success: true,
-        message: 'User updated successfully.',
+        message: "User updated successfully.",
         user: {
           id: user.id,
-          username: user.username,
+          username: username || user.username,
           email: user.email,
-          mobile_number: user.mobile_number,
-          profile_pic: user.profile_pic,
+          mobile_number: mobile_number || user.mobile_number,
+          profile_pic,
         },
       });
     } catch (error) {
-      console.error('Update error:', error);
+      console.error("Update error:", error);
       next(error);
     }
   },
 ];
+
+
 const otpStorage = new Map<string, { otp: string; expiresAt: number }>();
 
 const transporter = nodemailer.createTransport({

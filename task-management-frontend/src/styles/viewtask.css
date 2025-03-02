@@ -1,0 +1,128 @@
+/* View Task Card */
+.view-task-card {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff; /* White background */
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-family: "Inter", sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-task-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover */
+}
+
+/* View Task Title */
+.view-task-title {
+  font-size: 2rem;
+  color: #2c3e50; /* Dark blue-gray */
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  border-bottom: 2px solid #00bcd4; /* Teal underline */
+  padding-bottom: 0.75rem;
+}
+
+/* View Task Description */
+.view-task-description {
+  font-size: 1.1rem;
+  color: #34495e; /* Slightly lighter blue-gray */
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* View Task Meta (Due Date and Status) */
+.view-task-meta {
+  margin-bottom: 1.5rem;
+}
+
+.view-task-due-date,
+.view-task-status {
+  font-size: 1rem;
+  color: #7f8c8d; /* Gray */
+  margin-bottom: 0.75rem;
+}
+
+.view-task-due-date strong,
+.view-task-status strong {
+  color: #2c3e50; /* Dark blue-gray */
+}
+
+/* View Task Back Button */
+.view-task-back-button {
+  background-color: #00bcd4; /* Teal */
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 500;
+  width: 100%; /* Full width */
+}
+
+.view-task-back-button:hover {
+  background-color: #0097a7; /* Darker teal */
+  transform: translateY(-2px);
+}
+
+.view-task-back-button:active {
+  transform: translateY(0);
+}
+
+/* Task Not Found Message */
+.view-task-not-found {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #e74c3c; /* Red */
+  margin-top: 2rem;
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .view-task-card {
+    padding: 1.5rem;
+    margin: 1.5rem;
+  }
+
+  .view-task-title {
+    font-size: 1.75rem;
+  }
+
+  .view-task-description {
+    font-size: 1rem;
+  }
+
+  .view-task-due-date,
+  .view-task-status {
+    font-size: 0.95rem;
+  }
+
+  .view-task-back-button {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .view-task-card {
+    padding: 1.25rem;
+    margin: 1rem;
+  }
+
+  .view-task-title {
+    font-size: 1.5rem;
+  }
+
+  .view-task-description {
+    font-size: 0.95rem;
+  }
+
+  .view-task-back-button {
+    font-size: 0.9rem;
+  }
+}

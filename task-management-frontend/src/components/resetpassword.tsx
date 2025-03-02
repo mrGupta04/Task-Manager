@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { sendOtp, verifyOtp, resetPassword } from "../services/authservice";
+import "../styles/resetpassword.css";
+import { useNavigate } from "react-router-dom";
 
 const ResetPassword: React.FC = () => {
+    const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [email, setEmail] = useState("");
     const [otp, setOtp] = useState("");
@@ -32,6 +35,7 @@ const ResetPassword: React.FC = () => {
             await resetPassword(email, newPassword);
             alert("Password Reset Successful");
             setStep(1);
+            navigate("/profile");
         } catch (error: any) {
             alert(error.response?.data?.message || "Error resetting password");
         }

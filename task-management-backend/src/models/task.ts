@@ -29,12 +29,10 @@ Task.init(
             allowNull: true,
         },
         status: {
-            type: DataTypes.STRING(20),
-            defaultValue: 'pending',
-            validate: {
-                isIn: [['pending', 'in-progress', 'completed']],
-            },
-        },
+            type: DataTypes.STRING,
+            allowNull: false,
+           
+          },
         
         due_date: {
             type: DataTypes.DATE,

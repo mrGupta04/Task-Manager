@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { updateUser } from "../services/authservice";
+import "../styles/updateprofile.css";
 
 interface User {
   username: string;
@@ -43,9 +44,16 @@ const UpdateProfile: React.FC<UpdateProfileProps> = ({ user, onUpdate, onClose }
     try {
       const formData = new FormData();
       formData.append("email", updatedUser.email);
-      if (updatedUser.username !== user.username) formData.append("username", updatedUser.username);
-      if (updatedUser.mobile_number !== user.mobile_number) formData.append("mobile_number", updatedUser.mobile_number);
-      if (profilePicFile) formData.append("profile_pic", profilePicFile);
+      formData.append("username", updatedUser.username);
+      formData.append("mobile_number", updatedUser.mobile_number);
+      if (profilePicFile) {
+        formData.append("profile_pic", profilePicFile);
+      }
+
+      // Log formData entries to verify
+      for (let [key, value] of formData.entries()) {
+        console.log(`${key}:`, value);
+      }
 
       const response = await updateUser(formData);
       if (response.success) {
@@ -70,16 +78,47 @@ const UpdateProfile: React.FC<UpdateProfileProps> = ({ user, onUpdate, onClose }
   return (
     <div className="update-form-container">
       <h2>Update Profile</h2>
-      {error && <p className="error-message">{error}</p>}
+      {error && <p className="up-error-message">{error}</p>}
       <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <div className="profile-pic-preview">
-          <img src={previewImage} alt="Profile" className="profile-pic" />
+        <div className="up-profile-pic-preview">
+          <img src={previewImage} alt="Profile" className="up-profile-pic" />
         </div>
-        <input type="file" accept="image/*" onChange={handleFileChange} className="file-input" />
-        <input type="text" name="username" value={updatedUser.username} onChange={handleChange} className="text-input" placeholder="Username" required />
-        <input type="tel" name="mobile_number" value={updatedUser.mobile_number} onChange={handleChange} className="text-input" placeholder="Mobile Number" required />
-        <button type="submit" className="save-button">Save</button>
-        <button type="button" onClick={onClose} className="cancel-button">Cancel</button>
+        <label htmlFor="profile-pic" className="up-file-label">
+          Choose Profile Picture
+        </label>
+        <input
+          type="file"
+          id="profile-pic"
+          accept="image/*"
+          onChange={handleFileChange}
+          className="up-file-input"
+        />
+        <input
+          type="text"
+          name="username"
+          value={updatedUser.username}
+          onChange={handleChange}
+          className="up-text-input"
+          placeholder="Username"
+          required
+        />
+        <input
+          type="tel"
+          name="mobile_number"
+          value={updatedUser.mobile_number}
+          onChange={handleChange}
+          className="up-text-input"
+          placeholder="Mobile Number"
+          required
+        />
+        <div className="up-button-container">
+          <button type="submit" className="up-save-button">
+            Save
+          </button>
+          <button type="button" onClick={onClose} className="up-cancel-button">
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

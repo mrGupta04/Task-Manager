@@ -1,0 +1,146 @@
+/* Task Card Container */
+.task-card-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1.5rem;
+    width: 100%; /* Full width by default */
+    max-width: 300px; /* Max width for larger screens */
+    min-height: 250px; /* Fixed height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* Hide overflow */
+  }
+  
+  .task-card-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Task Card Title */
+  .task-card-title {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    color: #333333;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+  }
+  
+  /* Task Card Description */
+  .task-card-description {
+    margin: 0 0 1rem 0;
+    color: #666666;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+    max-height: 4.5em; /* Limit height to 3 lines (1.5em per line) */
+  }
+  
+  /* Task Card Due Date */
+  .task-card-due-date {
+    margin: 0 0 0.5rem 0;
+    color: #888888;
+    font-size: 0.9rem;
+  }
+  
+  /* Task Card Status */
+  .task-card-status {
+    margin: 0 0 1rem 0;
+    color: #555555;
+    font-size: 0.9rem;
+  }
+  
+  /* Task Card Actions */
+  .task-card-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  /* Task Card Buttons */
+  .task-card-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    flex: 1; /* Make buttons take equal space */
+  }
+  
+  .task-card-button-update {
+    background-color: #00bcd4; /* Teal */
+    color: #ffffff;
+  }
+  
+  .task-card-button-update:hover {
+    background-color: #0097a7; /* Darker teal */
+  }
+  
+  .task-card-button-done {
+    background-color: #4caf50; /* Green */
+    color: #ffffff;
+  }
+  
+  .task-card-button-done:hover {
+    background-color: #388e3c; /* Darker green */
+  }
+  
+  .task-card-button-delete {
+    background-color: #f44336; /* Red */
+    color: #ffffff;
+  }
+  
+  .task-card-button-delete:hover {
+    background-color: #d32f2f; /* Darker red */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .task-card-container {
+      max-width: 100%; /* Full width on smaller screens */
+      padding: 1rem; /* Reduce padding for smaller screens */
+    }
+  
+    .task-card-title {
+      font-size: 1.1rem; /* Slightly smaller font size for mobile */
+    }
+  
+    .task-card-description {
+      font-size: 0.9rem; /* Slightly smaller font size for mobile */
+    }
+  
+    .task-card-actions {
+      flex-direction: column; /* Stack buttons vertically */
+      gap: 0.5rem; /* Reduce gap between buttons */
+    }
+  
+    .task-card-button {
+      width: 100%; /* Full width buttons on mobile */
+      font-size: 0.85rem; /* Slightly smaller font size for buttons */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .task-card-container {
+      min-height: auto; /* Allow height to adjust based on content */
+    }
+  
+    .task-card-title {
+      white-space: normal; /* Allow text to wrap on very small screens */
+      overflow: visible; /* Show full text */
+      text-overflow: clip; /* Remove ellipsis */
+    }
+  
+    .task-card-description {
+      -webkit-line-clamp: 4; /* Allow more lines for better readability */
+      max-height: 6em; /* Adjust height for more lines */
+    }
+  }

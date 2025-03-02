@@ -35,22 +35,24 @@ export const loginUser = async (user: { email: string; password: string }) => {
 };
 
 export const updateUser = async (user: FormData) => {
-  for (const [key, value] of user) {
-    console.log(`${key}:`, value);
-  }
-
   try {
-
-    const response = await axios.post(`${API_URL}/update`, user, {
-      headers: { "Content-Type": "multipart/form-data" },
+    const response = await axios.put(`${API_URL}/update`, user, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "Accept": "application/json",
+      },
     });
 
     return response.data;
   } catch (error: any) {
     console.error("Update error:", error.response?.data || error.message);
-    return { success: false, message: error.response?.data?.message || "Failed to update profile" };
+    return { 
+      success: false, 
+      message: error.response?.data?.message || "Failed to update profile" 
+    };
   }
 };
+
 
 
 export const sendOtp = async (email: string) => {

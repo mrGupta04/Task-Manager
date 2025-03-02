@@ -1,86 +1,157 @@
-.login-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    background-color: #1f2937;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    color: white;
-    margin: auto;
-    margin-top: 50px;
+/* Import Fonts & Icons */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+/* CSS Variables */
+:root {
+  --primary: #6366f1;
+  --secondary: #4f46e5;
+  --accent: #f59e0b;
+  --error: #ef4444;
+  --glass: rgba(255, 255, 255, 0.1);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-.login-title {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #d1d5db;
+/* Body Styling */
+body {
+  background: linear-gradient(135deg, #1e1b4b, #0f172a);
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
 }
 
-.login-form {
-    margin-top: 20px;
+/* Auth Container */
+.auth-login-container {
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 3rem;
+  max-width: 480px;
+  margin: 9rem auto;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.input-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
+/* Title */
+.auth-login-title {
+  color: #fff;
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
 }
 
-.input-field {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #4b5563;
-    border-radius: 5px;
-    background-color: #374151;
-    color: #f3f4f6;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.3s ease-in-out;
+.auth-login-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  margin: 12px auto 0;
 }
 
-.input-field:focus {
-    border-color: #8b5cf6;
+/* Form Styling */
+.auth-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.login-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #8b5cf6;
-    border: none;
-    color: white;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
+/* Input Groups */
+.auth-input-group {
+  position: relative;
 }
 
-.login-btn:hover {
-    background-color: #6d28d9;
+.auth-input-field {
+  width: 90%;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 1rem;
+  border: 1px solid transparent;
 }
 
-.forgot-password {
-    text-align: right;
-    font-size: 12px;
-    color: #9ca3af;
-    margin-bottom: 10px;
+.auth-input-field:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.forgot-password:hover {
-    color: #d1d5db;
+.auth-input-field::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
-.register-link {
-    text-align: center;
-    font-size: 14px;
-    color: #9ca3af;
-    margin-top: 10px;
+/* Error Message */
+.auth-error-message {
+  background: var(--error);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.register-link:hover {
-    color: #f3f4f6;
-    cursor: pointer;
+.auth-error-message::before {
+  content: '\f06a';
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+/* Button */
+.auth-login-btn {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-login-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: linear-gradient(135deg, #4f46e5, #4338ca);
+}
+
+/* Links */
+.auth-forgot-password-link,
+.auth-register-link-btn {
+  color: rgba(255, 255, 255, 0.8);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.auth-forgot-password-link:hover,
+.auth-register-link-btn:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.auth-register-link {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .auth-login-container {
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 16px;
+  }
+  
+  .auth-login-title {
+    font-size: 1.75rem;
+  }
+  
+  .auth-input-field {
+    padding: 0.8rem 1.2rem;
+  }
 }

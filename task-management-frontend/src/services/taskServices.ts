@@ -1,85 +1,74 @@
-const API_URL = "http://localhost:5000/tasks"; // Replace with actual backend URL
+import axios from 'axios';
 
-export const getTasks = async (status?: string): Promise<any[]> => {
-    try {
-        const url = status ? `${API_URL}?status=${encodeURIComponent(status)}` : API_URL;
-        
-        const response = await fetch(url, {
-            method: "GET",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
+const API_URL = "http://localhost:5000/api/tasks"; // Base URL for tasks
 
-        if (!response.ok) {
-            throw new Error("Failed to fetch tasks");
-        }
 
-        return await response.json();
-    } catch (error) {
-        console.error("Error fetching tasks:", error);
-        return [];
-    }
+
+export const getTasks = async (userId: string, status?: string): Promise<any[]> => {
+  try {
+
+
+    const response = await axios.get(`${API_URL}/gettask`, {
+      params: { user_id: userId, status }, // Send as query params
+      headers: { "Content-Type": "application/json" },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching tasks:", error);
+    throw error;
+  }
 };
 
 
+// Add a new task to the backend
+export const addTask = async (task: {
+  title: string;
+  description: string;
+  due_date?: string;
+  status: string;
+  user_id?: number;
+}) => {
+  try {
+    const response = await axios.post(`${API_URL}/createtask`, task, {
+      headers: { "Content-Type": "application/json" },
+    });
 
-export const addTask = async (task: { title: string; description: string; due_date?: string }) => {
-    try {
-        const response = await fetch(API_URL, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(task),
-        });
-
-        if (!response.ok) {
-            throw new Error("Error adding task");
-        }
-
-        return await response.json();
-    } catch (error) {
-        console.error("Error adding task:", error);
-        return null;
-    }
+    console.log("Task created successfully:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error adding task:", error);
+    throw error;
+  }
 };
 
-export const updateTask = async (id: number, updatedTask: Partial<{ title: string; description: string; status?: string; due_date?: string }>) => {
-    try {
-        const response = await fetch(`${API_URL}/${id}`, {
-            method: "PUT",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updatedTask),
-        });
+export const updateTask = async (
+  id: number,
 
-        if (!response.ok) {
-            throw new Error("Error updating task");
-        }
-
-        return await response.json();
-    } catch (error) {
-        console.error("Error updating task:", error);
-        return null;
-    }
+  updatedTask: Partial<{ title: string; description: string; status?: string; due_date?: string }>
+) => {
+  console.log(id);
+  console.log(updatedTask.title);
+  console.log(updatedTask.status);
+  try {
+    const response = await axios.put(`${API_URL}/update/${id}`, updatedTask, {
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log("Task updated successfully:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error updating task:", error);
+    throw error;
+  }
 };
 
-export const deleteTask = async (id: number) => {
-    try {
-        const response = await fetch(`${API_URL}/${id}`, {
-            method: "DELETE",
-            credentials: "include",
-        });
 
-        if (!response.ok) {
-            throw new Error("Error deleting task");
-        }
-    } catch (error) {
-        console.error("Error deleting task:", error);
-    }
+export const deleteTask = async (id: number): Promise<void> => {
+  try {
+    await axios.delete(`${API_URL}/delete/${id}`);
+    console.log("Task deleted successfully");
+  } catch (error) {
+    console.error("Error deleting task:", error);
+    throw error;
+  }
 };

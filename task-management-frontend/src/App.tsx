@@ -7,8 +7,10 @@ import Profile from "./pages/profile";
 import Signup from './components/signup';
 import ResetPassword from './components/resetpassword';
 import Home from './pages/home';
-
-
+import TaskForm from "./components/taskform";
+import UpdateTask from './components/updatetask';
+import ViewTask from "./components/viewtask";
+import Login from "./components/login";
 
 const App= () => {
   return (
@@ -20,6 +22,10 @@ const App= () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/resetpassword" element={< ResetPassword  />} />
+        <Route path="/add-task" element={<TaskForm />} />
+        <Route path="/update-task/:id" element={<UpdateTask />} />
+        <Route path="/view-task/:id" element={<ViewTask />} />
+
       </Routes>
       <Footer />
     </Router>
