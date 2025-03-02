@@ -83,6 +83,12 @@ CREATE TABLE users (
     profile_pic TEXT DEFAULT NULL,
     created_at TIMESTAMP DEFAULT NOW()
 );
+
+
+
+
+
+
 CREATE TABLE tasks (
     id SERIAL PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
