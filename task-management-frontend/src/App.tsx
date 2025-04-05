@@ -11,17 +11,30 @@ import TaskForm from "./components/taskform";
 import UpdateTask from './components/updatetask';
 import ViewTask from "./components/viewtask";
 import Login from "./components/login";
+import About from "./components/about";
+import Contact from "./components/contact";
 
-const App= () => {
+
+
+
+
+const App = () => {
   return (
+
     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/tasks" element={<Tasks />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+
+    
+
+
         <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/resetpassword" element={< ResetPassword  />} />
+        <Route path="/resetpassword" element={< ResetPassword />} />
         <Route path="/add-task" element={<TaskForm />} />
         <Route path="/update-task/:id" element={<UpdateTask />} />
         <Route path="/view-task/:id" element={<ViewTask />} />
@@ -29,6 +42,8 @@ const App= () => {
       </Routes>
       <Footer />
     </Router>
+
+
   );
 };
 export default App;

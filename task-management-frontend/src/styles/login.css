@@ -117,7 +117,7 @@ body {
   background: linear-gradient(135deg, #4f46e5, #4338ca);
 }
 
-/* Links */
+
 .auth-forgot-password-link,
 .auth-register-link-btn {
   color: rgba(255, 255, 255, 0.8);

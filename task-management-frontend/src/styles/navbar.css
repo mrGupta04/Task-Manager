@@ -1,173 +1,313 @@
-/* Reset default margin and padding for body and html */
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-/* Modern Navbar Container */
+/* Modern Navbar Styles */
 .modern-navbar {
-  background-color: #2c3e50; /* Dark blue-gray */
-  color: #ffffff;
-  padding: 1rem 2rem; /* Padding on sides, no padding at the top */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  color: #2c3e50;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
-  margin: 0; /* Ensure no margin at the top */
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Navbar Container */
+.modern-navbar.scrolled {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 2rem;
+}
+
 .modern-navbar__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-/* Logo */
-.modern-navbar__logo {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
+/* Logo Styles */
 .modern-navbar__logo-link {
-  color: #ffffff;
+  display: flex;
+  align-items: center;
   text-decoration: none;
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 1.5rem;
+  transition: transform 0.2s ease;
 }
 
-/* Desktop Menu */
+.modern-navbar__logo-link:hover {
+  transform: scale(1.02);
+}
+
+.modern-navbar__logo-icon {
+  margin-right: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.modern-navbar__logo-text {
+  background: linear-gradient(90deg, #3498db, #2ecc71);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Desktop Menu Styles */
 .modern-navbar__desktop-menu {
   display: flex;
   align-items: center;
-  gap: 2rem;
 }
 
-/* Home Link (Centered) */
+.modern-navbar__desktop-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
 .modern-navbar__desktop-link {
-  color: #ffffff;
+  color: #2c3e50;
   text-decoration: none;
-  font-size: 1rem;
   font-weight: 500;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: color 0.3s ease; /* Smooth color transition */
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
 .modern-navbar__desktop-link:hover {
-  color: #00bcd4; /* Teal on hover */
+  color: #3498db;
 }
 
-/* Profile Link */
+.modern-navbar__desktop-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3498db;
+  transition: width 0.3s ease;
+}
+
+.modern-navbar__desktop-link:hover::after {
+  width: 100%;
+}
+
+/* Actions Section */
+.modern-navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.modern-navbar__notification-button {
+  background: none;
+  border: none;
+  color: #2c3e50;
+  font-size: 1.2rem;
+  cursor: pointer;
+  position: relative;
+  padding: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.modern-navbar__notification-button:hover {
+  transform: scale(1.1);
+}
+
+.modern-navbar__notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+/* Profile Styles */
 .modern-navbar__profile-link {
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0.5rem;
-  border: 2px solid transparent;
-  border-radius: 50%;
-  transition: border-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
 }
 
-.modern-navbar__profile-link:hover {
-  border-color: #00bcd4; /* Teal border on hover */
-  transform: scale(1.1); /* Slightly enlarge on hover */
-}
-
-/* Profile Image */
 .modern-navbar__profile-image {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  transition: transform 0.3s ease; /* Smooth scale transition */
+  border: 2px solid #ecf0f1;
+  transition: all 0.3s ease;
 }
 
-.modern-navbar__profile-link:hover .modern-navbar__profile-image {
-  transform: scale(1.1); /* Slightly enlarge on hover */
+.modern-navbar__profile-image:hover {
+  border-color: #3498db;
+  transform: scale(1.05);
 }
 
-/* Profile Icon (Fallback) */
-.modern-navbar__profile-icon {
+.modern-navbar__profile-fallback {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ecf0f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7f8c8d;
   font-size: 1.5rem;
-  color: #ffffff;
-  transition: transform 0.3s ease; /* Smooth scale transition */
+  transition: all 0.3s ease;
 }
 
-.modern-navbar__profile-link:hover .modern-navbar__profile-icon {
-  transform: scale(1.1); /* Slightly enlarge on hover */
+.modern-navbar__profile-fallback:hover {
+  background-color: #3498db;
+  color: white;
 }
 
 /* Mobile Menu Button */
 .modern-navbar__mobile-menu-button {
-  display: none; /* Hidden by default */
+  display: none;
   background: none;
   border: none;
-  color: #ffffff;
-  font-size: 1.5rem;
   cursor: pointer;
+  padding: 0.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+  position: relative;
+  z-index: 1001;
+}
+
+.modern-navbar__hamburger-line {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #2c3e50;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.modern-navbar__mobile-menu-button.open .modern-navbar__hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.modern-navbar__mobile-menu-button.open .modern-navbar__hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.modern-navbar__mobile-menu-button.open .modern-navbar__hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Mobile Menu */
 .modern-navbar__mobile-menu {
-  display: none; /* Hidden by default */
-  flex-direction: column;
-  gap: 1rem;
-  background-color: #2c3e50;
-  padding: 1rem;
-  position: absolute;
-  top: 100%;
+  display: none;
+  position: fixed;
+  top: 0;
   left: 0;
   width: 100%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
-/* Mobile Menu Links */
-.modern-navbar__mobile-nav-link {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.modern-navbar__mobile-nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-/* Mobile Menu Open State */
 .modern-navbar__mobile-menu.open {
   display: flex;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modern-navbar__mobile-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.modern-navbar__mobile-link {
+  color: #2c3e50;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.modern-navbar__mobile-link:hover {
+  color: #3498db;
+}
+
+.modern-navbar__mobile-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3498db;
+  transition: width 0.3s ease;
+}
+
+.modern-navbar__mobile-link:hover::after {
+  width: 100%;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-  /* Hide Desktop Menu on Mobile */
+@media (max-width: 992px) {
   .modern-navbar__desktop-menu {
     display: none;
   }
-
-  /* Show Mobile Menu Button */
+  
   .modern-navbar__mobile-menu-button {
-    display: block;
+    display: flex;
   }
+}
 
-  /* Adjust Logo Size */
-  .modern-navbar__logo {
-    font-size: 1.25rem;
+@media (max-width: 576px) {
+  .modern-navbar {
+    padding: 0.75rem 1rem;
   }
-
-  /* Adjust Profile Image Size */
-  .modern-navbar__profile-image {
-    width: 35px;
-    height: 35px;
+  
+  .modern-navbar__logo-text {
+    font-size: 1.3rem;
   }
-
-  /* Adjust Profile Icon Size */
-  .modern-navbar__profile-icon {
-    font-size: 1.25rem;
+  
+  .modern-navbar__logo-icon {
+    font-size: 1.5rem;
+  }
+  
+  .modern-navbar__actions {
+    gap: 1rem;
+  }
+  
+  .modern-navbar__notification-button {
+    font-size: 1.1rem;
+  }
+  
+  .modern-navbar__profile-image,
+  .modern-navbar__profile-fallback {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
   }
 }

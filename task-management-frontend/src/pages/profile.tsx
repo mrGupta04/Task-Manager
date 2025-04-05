@@ -13,26 +13,26 @@ const Profile: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
+    const storedUser = localStorage.getItem("user");
     if (storedUser) {
       try {
         const parsedUser: User = JSON.parse(storedUser);
         setUser(parsedUser);
       } catch (error) {
         console.error('Failed to parse user data from localStorage:', error);
-        localStorage.removeItem('user');
+        localStorage.removeItem("user");
       }
     }
   }, []);
 
   const handleLogin = (userData: User) => {
     setUser(userData);
-    localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem("user", JSON.stringify(userData));
   };
 
   const handleLogout = () => {
     setUser(null);
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     window.location.reload();
   };
 

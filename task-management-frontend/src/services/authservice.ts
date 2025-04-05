@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = "https://task-manager-cjw8.onrender.com/api/auth";
 
 // Register User
 export const registerUser = async (user: FormData) => {

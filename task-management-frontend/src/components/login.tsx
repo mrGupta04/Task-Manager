@@ -31,6 +31,8 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         const { token, user: userData } = response;
         localStorage.setItem("user", JSON.stringify(userData));
         localStorage.setItem("token", token);
+        window.location.reload();
+
         onLogin(userData);
         navigate("/profile");
       } else {

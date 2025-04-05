@@ -14,7 +14,7 @@ interface ProfilecardProps {
   onLogout: () => void;
 }
 
-const backendUrl = "http://localhost:5000"; // Replace with your backend URL
+const backendUrl = "https://task-manager-cjw8.onrender.com"; // Replace with your backend URL
 
 const Profilecard: React.FC<ProfilecardProps> = ({ user, onLogout }) => {
   const [isUpdating, setIsUpdating] = useState(false);

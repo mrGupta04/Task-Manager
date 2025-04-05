@@ -5,7 +5,6 @@ import "../styles/signup.css";
 
 const Signup: React.FC = () => {
     const navigate = useNavigate();
-
     const [user, setUser] = useState({
         username: "",
         email: "",
@@ -32,49 +31,70 @@ const Signup: React.FC = () => {
         }
     };
 
-    const register = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+    const validateForm = () => {
         const { username, email, mobile_number, profile_pic, password } = user;
 
         if (!username || !email || !mobile_number || !profile_pic || !password) {
             alert("All fields are required!");
-            return;
+            return false;
         }
+
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters long");
+            return false;
+        }
+
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            alert("Please enter a valid email address");
+            return false;
+        }
+
+        if (!/^\d{10}$/.test(mobile_number)) {
+            alert("Please enter a valid 10-digit mobile number");
+            return false;
+        }
+
+        return true;
+    };
+
+    const register = async (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        if (!validateForm()) return;
 
         try {
             const formData = new FormData();
-            formData.append("username", username);
-            formData.append("email", email);
-            formData.append("mobile_number", mobile_number);
-            formData.append("password", password);
+            formData.append("username", user.username);
+            formData.append("email", user.email);
+            formData.append("mobile_number", user.mobile_number);
+            formData.append("password", user.password);
 
-            if (profile_pic) {
-                formData.append("profile_pic", profile_pic);
+            if (user.profile_pic) {
+                formData.append("profile_pic", user.profile_pic);
             }
 
             const response = await registerUser(formData);
-
+            
             if (response?.success) {
-                // Store user data in local storage
                 const userData = {
-                    username: response.data?.username || "",
-                    email: response.data?.email || "",
-                    mobile_number: response.data?.mobile_number || "",
-                    profile_pic_url: response.data?.profile_pic_url || "",
+                    id: response.user.id,
+                    username: response.user.username,
+                    email: response.user.email,
+                    mobile_number: response.user.mobile_number,
+                    profile_pic: response.user.profile_pic,
                 };
+
                 localStorage.setItem("user", JSON.stringify(userData));
-                localStorage.setItem("token", response?.token || "");
+                localStorage.setItem("token", response.token);
 
-                console.log("Signup response:", response);
-
-                alert(response?.message || "Registration successful!");
-                navigate("/profile");
+                alert("Registration successful!");
+                navigate("/profile");  // Redirect to profile page
             } else {
                 alert(response?.message || "Registration failed. Please try again.");
             }
         } catch (error) {
             console.error("Registration Error:", error);
-            alert("Something went wrong. Please try again.");
+            alert("Email or mobile number is already registered");
         }
     };
 
@@ -83,10 +103,11 @@ const Signup: React.FC = () => {
             <h2 className="register-title">Create a New Account</h2>
             <p className="register-subtext">
                 Already have an account?{" "}
-                <button className="register-link" type="button" onClick={() => navigate("/profile")}>
+                <button className="register-link" type="button" onClick={() => navigate("/login")}>
                     Login
                 </button>
             </p>
+            
             <form className="register-form" onSubmit={register}>
                 <input
                     type="text"
@@ -112,7 +133,7 @@ const Signup: React.FC = () => {
                     value={user.mobile_number}
                     onChange={handleChange}
                     className="register-input"
-                    placeholder="Mobile Number"
+                    placeholder="Mobile Number (10 digits)"
                     required
                 />
                 <input
@@ -122,7 +143,7 @@ const Signup: React.FC = () => {
                     className="register-file-input"
                     required
                 />
-                {/* Profile preview - Add this right after file input */}
+                
                 {user.profile_pic && (
                     <img
                         src={URL.createObjectURL(user.profile_pic)}
@@ -136,7 +157,7 @@ const Signup: React.FC = () => {
                     value={user.password}
                     onChange={handleChange}
                     className="register-input"
-                    placeholder="Password"
+                    placeholder="Password (min 6 characters)"
                     required
                 />
                 <button type="submit" className="register-button">Register</button>
