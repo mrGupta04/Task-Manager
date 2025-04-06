@@ -101,6 +101,7 @@ const TaskForm: React.FC = () => {
         <input
           type="date"
           name="due_date"
+          placeholder="Due date"
           value={task.due_date}
           onChange={handleChange}
           className="task-form-input"
