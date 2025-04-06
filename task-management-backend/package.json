@@ -3,13 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
       "build": "tsc",
   "start": "node dist/index.js"
-=======
-   
-   
->>>>>>> ec40a1620567ffaae2eb93fec260d36b833da42d
+  
   },
   "keywords": [],
   "author": "",

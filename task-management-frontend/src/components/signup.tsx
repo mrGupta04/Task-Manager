@@ -88,7 +88,7 @@ const Signup: React.FC = () => {
                 localStorage.setItem("token", response.token);
 
                 alert("Registration successful!");
-                navigate("/profile");  // Redirect to profile page
+                navigate("/profile"); 
             } else {
                 alert(response?.message || "Registration failed. Please try again.");
             }
@@ -103,7 +103,11 @@ const Signup: React.FC = () => {
             <h2 className="register-title">Create a New Account</h2>
             <p className="register-subtext">
                 Already have an account?{" "}
-                <button className="register-link" type="button" onClick={() => navigate("/login")}>
+                <button 
+                    className="register-link" 
+                    type="button" 
+                    onClick={() => navigate("/login")}
+                >
                     Login
                 </button>
             </p>

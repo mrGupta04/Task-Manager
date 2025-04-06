@@ -19,6 +19,12 @@ import Contact from "./components/contact";
 
 
 const App = () => {
+
+  const handleLogin = (userData: any) => {
+    // You can handle any global state updates here if needed
+    console.log('User logged in:', userData);
+  };
+
   return (
 
     <Router>
@@ -28,10 +34,11 @@ const App = () => {
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-
-    
-
-
+        
+        <Route 
+          path="/login" 
+          element={<Login onLogin={handleLogin} />} 
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/resetpassword" element={< ResetPassword />} />
