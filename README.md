@@ -1,5 +1,4 @@
 # ✅ Task Flow – Full Stack Task Manager  
-![License](https://img.shields.io/badge/license-MIT-blue.svg)  
 ![Status](https://img.shields.io/badge/status-Completed-brightgreen)  
 ![React](https://img.shields.io/badge/Frontend-React.js-blue)  
 ![Node](https://img.shields.io/badge/Backend-Node.js-yellowgreen)  
