@@ -1,4 +1,5 @@
 # ✅ Task Flow – Full Stack Task Manager  
+![License](https://img.shields.io/badge/license-MIT-blue.svg)  
 ![Status](https://img.shields.io/badge/status-Completed-brightgreen)  
 ![React](https://img.shields.io/badge/Frontend-React.js-blue)  
 ![Node](https://img.shields.io/badge/Backend-Node.js-yellowgreen)  
@@ -6,13 +7,7 @@
 
 > A modern full-stack task management web app to help users track and organize daily tasks with ease.
 
-🌐 **Live Demo**: [task-flow-74km.onrender.com]([https://task-flow-74km.onrender.com/](https://task-flow-74km.onrender.com/))
-
----
-
-## 🖼️ Preview
-
-![Task Flow Preview](https://via.placeholder.com/1000x400?text=Task+Flow+App+Preview)
+🌐 **Live Demo**: [task-flow-74km.onrender.com](https://task-flow-74km.onrender.com/)
 
 ---
 
@@ -46,7 +41,7 @@
 
 ## 📁 Project Structure
 
-\`\`\`
+```
 task-flow/
 ├── client/          # React frontend
 │   ├── src/
@@ -61,7 +56,7 @@ task-flow/
 │   ├── routes/      # API endpoints
 │   └── index.js     # Main app entry
 └── README.md
-\`\`\`
+```
 
 ---
 
@@ -69,20 +64,20 @@ task-flow/
 
 ### 📦 Backend Setup
 
-\`\`\`bash
+```
 cd server
 cp .env.example .env   # Set DATABASE_URL and JWT_SECRET
 npm install
 npm start
-\`\`\`
+```
 
 ### 🎨 Frontend Setup
 
-\`\`\`bash
+```
 cd client
 npm install
 npm start
-\`\`\`
+```
 
 ⚠️ **Note:** Ensure the backend server is running before launching the frontend.
 
@@ -90,13 +85,13 @@ npm start
 
 ## 🔐 .env Example
 
-\`\`\`env
+```env
 # PostgreSQL DB URL
 DATABASE_URL=postgresql://username:password@host:port/database
 
 # JWT Secret Key
 JWT_SECRET=your_jwt_secret_key
-\`\`\`
+```
 
 ---
 
